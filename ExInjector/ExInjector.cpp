@@ -9,7 +9,7 @@
 #include "tlhelp32.h"
 #include "tchar.h"
 #include "wchar.h"
-
+// Original, obfuscated code stored in ExInjector.cpp.debil
 DWORD GetProccessId(char* name);
 
 extern "C" __declspec(dllexport) bool file_exists(const std::string &dll) {
@@ -17,7 +17,7 @@ extern "C" __declspec(dllexport) bool file_exists(const std::string &dll) {
 	return (stat(dll.c_str(), &_Stat)==0);
 }
 
-extern "C" __declspec(dllexport) char injectDllPID(int dwProcessId, char* dll) {
+char injectDllPID(int dwProcessId, char* dll) {
 	HANDLE hProcess; 
 	HMODULE hModule;
 	char buf[50]={0};
