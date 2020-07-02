@@ -9,15 +9,17 @@
 #include "tlhelp32.h"
 #include "tchar.h"
 #include "wchar.h"
+
+#define EXPORTFUNC extern "C" __declspec(dllexport)
 // Original, obfuscated code stored in ExInjector.cpp.debil
 DWORD GetProccessId(char* name);
 
-extern "C" __declspec(dllexport) bool file_exists(const std::string &dll) {
+EXPORTFUNC bool file_exists(const std::string &dll) {
 	struct stat _Stat;
 	return (stat(dll.c_str(), &_Stat)==0);
 }
 
-extern "C" __declspec(dllexport) char injectDllPID(int dwProcessId, char* dll) {
+EXPORTFUNC char injectDllPID(int dwProcessId, char* dll) {
 	HANDLE hProcess; 
 	HMODULE hModule;
 	char buf[50]={0};
@@ -51,7 +53,7 @@ extern "C" __declspec(dllexport) char injectDllPID(int dwProcessId, char* dll) {
 	return 0;
 }
 
-extern "C" __declspec(dllexport) int injectDll(char* name, char* dll) {
+EXPORTFUNC int injectDll(char* name, char* dll) {
 	DWORD dwProcessId = GetProccessId(name);
 
 	if (dwProcessId != 0)
@@ -60,7 +62,7 @@ extern "C" __declspec(dllexport) int injectDll(char* name, char* dll) {
 	return 1;
 }
 
-extern "C" __declspec(dllexport) bool IsAdmin()
+EXPORTFUNC bool IsAdmin()
 {
 	bool IsAdmin = FALSE;
 	HANDLE TokenHandle = NULL;
