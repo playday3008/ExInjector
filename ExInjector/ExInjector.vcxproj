@@ -151,7 +151,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="debil.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="ExInjector.cpp" />
     <ClCompile Include="stdafx.cpp">
